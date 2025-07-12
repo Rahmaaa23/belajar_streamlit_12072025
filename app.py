@@ -13,6 +13,13 @@ st.markdown("*Streamlit* is **really** ***cool***.")
 
 st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+
+st.line_chart(chart_data)
 
 col1, col2, col3 = st.columns(3)
 
@@ -27,3 +34,13 @@ with col2:
 with col3:
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg")
+
+with st.sidebar:
+    with st.echo():
+        st.write("This code will be printed to the sidebar.")
+
+    with st.spinner("Loading..."):
+        time.sleep(5)
+    st.success("Done!")
+
+
